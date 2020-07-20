@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/home.css">
     <title>GOTTA CATCH THEM ALL!</title>
@@ -18,13 +17,34 @@
         </div>
     </header>
     <main>
-        <section class="main-section">
-            
+        <section id="quiz-section">
+            <h2 id="pokemon-name"></h2>
+
+            <!-- holds 3 random pokemon to catch -->
+            <!-- 3 inputs w/ 3 imgs -->
+            <div id="pokemon-choice-container">
+                
+                <label>
+                    <input type="radio" name="" value="">
+                </label>
+
+                <lable>
+                    <input type="radio" name="" value="">
+                </lable>
+
+                <label>
+                    <input type="radio" name="" value="">
+                </label>
+
+                <button id="submit-button">
+                    Submit
+                </button>
+            </div>
+            <div id="results-div" class="hidden">
+                <p id="next-button">Next</p>
+            </div>
         </section>
     </main>
-    <footer>
-        
-    </footer>
 
     <script type="module" src="app.js"></script>
 </body>
