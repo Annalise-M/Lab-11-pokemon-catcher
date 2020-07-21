@@ -50,3 +50,7 @@ section {
     display: none;
 }
 
+.disabled {
+    opacity: .2;
+}
+
