@@ -26,15 +26,13 @@ function setPage() {
     
 
     // set event listeners to update state and DOM
-    const randomPkm1 = getRandomPkm(remainingPkm);
+    let randomPkm1 = getRandomPkm(remainingPkm);
     let randomPkm2 = getRandomPkm(remainingPkm);
     let randomPkm3 = getRandomPkm(remainingPkm);
     
-    while (randomPkm1.id === randomPkm2.id) {
+    while (randomPkm1.id === randomPkm2.id || randomPkm1.id === randomPkm3.id || randomPkm2.id === randomPkm3.id) {
         randomPkm1 = getRandomPkm(remainingPkm); 
-    } while (randomPkm1.id === randomPkm3.id) {
         randomPkm2 = getRandomPkm(remainingPkm);
-    } while (randomPkm2.id === randomPkm3.id) {
         randomPkm3 = getRandomPkm(remainingPkm);
     }
     
@@ -42,6 +40,7 @@ function setPage() {
     const randomOneOrTwo = Math.random(Math.random(randomZeroOrOne));
     
     console.log(randomPkm1, randomPkm2, randomPkm3);
+
     if (randomZeroOrOne === 0) {
         correctAnswer = randomPkm1;
     } else if (randomOneOrTwo === 1) {
@@ -145,6 +144,7 @@ radio.forEach((radioTag) => {
         getRandomPkm();
     });
 
+setPage();
 
 });
 

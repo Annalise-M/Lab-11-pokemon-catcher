@@ -476,7 +476,7 @@ export const pokemonData = [
         "shape":"squiggle",
         "pokebase":"metapod",
         "pokedex":"http://www.pokemon.com/us/pokedex/metapod"
-    },
+        },
 
     {   
         "_id":"5cef3501ef6005a77cd4fd25",
