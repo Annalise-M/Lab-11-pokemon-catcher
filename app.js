@@ -37,23 +37,19 @@ function setPage() {
         alert('show results');
     }
     
-    
-    // set event listeners to update state and DOM
     const randomPkm1 = getRandomPkm(remainingPkm);
     let randomPkm2 = getRandomPkm(remainingPkm);
     let randomPkm3 = getRandomPkm(remainingPkm);
     
+
     while (randomPkm1.id === randomPkm2.id || randomPkm1.id === randomPkm3.id || randomPkm2.id === randomPkm3.id) {
         randomPkm2 = getRandomPkm(remainingPkm);
         randomPkm3 = getRandomPkm(remainingPkm);
     }
     
+
     const randomZeroOrOne = Math.random(Math.random());
     const randomOneOrTwo = Math.random(Math.random(randomZeroOrOne));
-    
-    // console.log(randomPkm1.pokemon, randomPkm2.pokemon, randomPkm3.pokemon);
-    
-    
     
     if (randomZeroOrOne === 0) {
         correctAnswer = randomPkm1;
@@ -62,23 +58,20 @@ function setPage() {
     } else {
         correctAnswer = randomPkm3;
     }
-    
-    // console.log(correctAnswer.name);
-    
     answerDiv.textContent = correctAnswer.name;
     
 
     encounteredPokemon(pkmEncountered, randomPkm1.id);
     encounteredPokemon(pkmEncountered, randomPkm2.id);
     encounteredPokemon(pkmEncountered, randomPkm3.id);
-
-    radio1.value = randomPkm1.id;
-    radio2.value = randomPkm2.id;
-    radio3.value = randomPkm3.id;
-
+    
     image1.src = randomPkm1.url_image;
     image2.src = randomPkm2.url_image;
     image3.src = randomPkm3.url_image;
+    
+    radio1.value = randomPkm1.id;
+    radio2.value = randomPkm2.id;
+    radio3.value = randomPkm3.id;
 
     radio1.textContent = randomPkm1.pokemon;
     radio2.textContent = randomPkm2.pokemon;
@@ -92,7 +85,6 @@ function setPage() {
     choiceDiv.classList.remove('disabled');
     nextButton.classList.add('hidden');
     
-
 
     let allTimeResultsStorage = localStorage.getItem('PKM-STATS');
     if (allTimeResultsStorage) {
@@ -125,6 +117,7 @@ submitButton.addEventListener('click', () => {
     resultScreenActivator(clickCounter);
    
 });
+// console.log(clickCounter, caughtPokemon, pkmEncountered);
 
 
 setPage();

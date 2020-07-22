@@ -241,7 +241,7 @@ export const pokemonData = [
     },
 
     {
-            "_id":"5cef3501ef6005a77cd4fd1e",
+        "_id":"5cef3501ef6005a77cd4fd1e",
         "pokemon":"charizard-mega-y",
         "id":9,
         "species_id":6,

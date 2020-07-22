@@ -87,7 +87,7 @@ export function resultScreenActivator(clickCounter) {
 
     if (clickCounter === 0) {
 
-        window.location.href = '../results.html';
+        window.location.href = './results.html';
 
     }
 }
@@ -99,3 +99,19 @@ export function clearTempStorage(tempStorage) {
 }
 
 
+export function getLocalStorage() {
+
+    const storageData = localStorage.getItem('STORAGE');
+    const parsedStorageData = JSON.parse(storageData);
+
+    return parsedStorageData;
+}
+
+
+export function getPkmStorage() {
+
+    const storageData = localStorage.getItem('PKM-STORAGE');
+    const parsedStorageData = JSON.parse(storageData);
+
+    return parsedStorageData;
+}
