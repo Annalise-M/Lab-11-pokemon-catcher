@@ -87,7 +87,7 @@ export function resultScreenActivator(clickCounter) {
 
     if (clickCounter === 0) {
 
-        window.location.href = './results.html';
+        window.location.href = '../results.html';
 
     }
 }
