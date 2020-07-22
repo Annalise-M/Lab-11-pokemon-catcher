@@ -79,7 +79,7 @@ export function incrementor(pkmArray, id) {
     }
     itemSeen.encounteredPokemon++;
     itemSeen.caughtPokemon++;
-
+ 
 }
 
 

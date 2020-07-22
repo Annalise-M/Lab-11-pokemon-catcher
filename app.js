@@ -7,7 +7,7 @@ import {
 } from './utils.js';
 
 const submitButton = document.getElementById('submit-button');
-const nextButton = document.getElementById('next-button');
+// const nextButton = document.getElementById('next-button');
 const answerDiv = document.querySelector('#answer');
 
 const radio1 = document.getElementById('input1');
@@ -77,14 +77,13 @@ function setPage() {
     radio2.textContent = randomPkm2.pokemon;
     radio3.textContent = randomPkm3.pokemon;
 
-    radio1.disabled = false;
-    radio2.disabled = false;
-    radio3.disabled = false;
+    // radio1.disabled = false;
+    // radio2.disabled = false;
+    // radio3.disabled = false;
 
     const choiceDiv = document.getElementById('pokemon-choice-container');
     choiceDiv.classList.remove('disabled');
-    nextButton.classList.add('hidden');
-    
+
 
     let allTimeResultsStorage = localStorage.getItem('PKM-STATS');
     if (allTimeResultsStorage) {
@@ -121,6 +120,7 @@ submitButton.addEventListener('click', () => {
 
 
 setPage();
+
 
 export function saveToLocalStorage(dataStorage) {
     const newStoredPkm = JSON.stringify(dataStorage);

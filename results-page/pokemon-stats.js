@@ -1,9 +1,3 @@
-// import {
-//     getLocalStorage,
-//     getPkmStorage
-// } from '../utils.js';
-
-
 const bulbasaur = {
     id: 1,
     pokemon: 'bulbasaur',
