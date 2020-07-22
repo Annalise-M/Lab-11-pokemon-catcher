@@ -1,5 +1,10 @@
 import { pokemonData } from './pokemon.js';
-import { getRandomPkm, encounteredPokemon } from './utils.js';
+import { 
+    getRandomPkm, 
+    encounteredPokemon,  
+    incrementor, 
+    resultScreenActivator
+} from './utils.js';
 
 const submitButton = document.getElementById('submit-button');
 const nextButton = document.getElementById('next-button');
@@ -14,14 +19,17 @@ const image2 = document.getElementById('image2');
 const image3 = document.getElementById('image3');
 
 
-let remainingPkm = pokemonData.slice();
 // let pkmMissed = [];
 // let totalPokemonCaught = 0;
-let pkmEncountered = pokemonData.slice();
 
+// let pkmEncountered = pokemonData.slice();
+let remainingPkm = pokemonData.slice();
 let correctAnswer = null;
 
-
+let clickCounter = 10;
+let pkmEncountered = [];
+let caughtPokemon = [];
+let allTimeResults;
 
 function setPage() {
     
@@ -59,34 +67,11 @@ function setPage() {
     
     answerDiv.textContent = correctAnswer.name;
     
-    
-    
-    // grabs the array of labels
-    // const labels = document.querySelectorAll('label');
-    // const firstLabel = labels[0];
-    // const secondLabel = labels[1];
-    // const thirdLabel = labels[2];
-
-    // const input1 = firstLabel.children[0];
-    // const input2 = secondLabel.children[0];
-    // const input3 = thirdLabel.children[0];
-    
-    // input1.addEventListener('click', eventHandler);
-    // input2.addEventListener('click', eventHandler);
-    // input3.addEventListener('click', eventHandler);
-
-    // const pkmImageTag1 = firstLabel.children[0];
-    // const pkmImageTag2 = secondLabel.children[1];
-    // const pkmImageTag3 = thirdLabel.children[2];
-
-    // let span1 = firstLabel.children[0];
-    // const span2 = secondLabel.children[1];
-    // const span3 = thirdLabel.children[2];
 
     encounteredPokemon(pkmEncountered, randomPkm1.id);
     encounteredPokemon(pkmEncountered, randomPkm2.id);
     encounteredPokemon(pkmEncountered, randomPkm3.id);
-    
+
     radio1.value = randomPkm1.id;
     radio2.value = randomPkm2.id;
     radio3.value = randomPkm3.id;
@@ -99,12 +84,6 @@ function setPage() {
     radio2.textContent = randomPkm2.pokemon;
     radio3.textContent = randomPkm3.pokemon;
 
-    // console.log(pkmEncountered, randomPkm1.id);
-    // console.log(randomPkm1.pokemon);
-    // console.log(randomPkm2.pokemon);
-    // console.log(randomPkm3.pokemon);
-    
-
     radio1.disabled = false;
     radio2.disabled = false;
     radio3.disabled = false;
@@ -113,44 +92,51 @@ function setPage() {
     choiceDiv.classList.remove('disabled');
     nextButton.classList.add('hidden');
     
-    
-    // console.log('clickedPkm', clickedPkm);
+
+
+    let allTimeResultsStorage = localStorage.getItem('PKM-STATS');
+    if (allTimeResultsStorage) {
+        let parsedAllTimesResultsStorage = JSON.parse(allTimeResultsStorage);
+
+        allTimeResults = parsedAllTimesResultsStorage;
+    } else {
+        allTimeResults = [];
+    }
+
     
 }    
 
 
 submitButton.addEventListener('click', () => {
-    // const playersChoice = document.querySelector('input[type = radio]:checked');
-    // const chosenPkm = playersChoice.value;
 
-    //Incrementer(itemChose, itemsPickedArray)
+    const playersChoice = document.querySelector('input[type = radio]:checked');
+    const chosenPkm = playersChoice.value;
 
-    // encounteredPokemon(chosenPkm, id);
-    // pkmMissed++;
-    
-    // const whatTheyClicked = event.target.value;
-    // if (whatTheyClicked === correctAnswer.id) {
-    //     let indexOfPkm;
+    incrementor(caughtPokemon, chosenPkm);
+    incrementor(allTimeResults, chosenPkm);
 
-    //     //iterating through all remaining pokemon
-    //     for (let i = 0; i < remainingPkm.length; i++) {
-    //         const pokemon = remainingPkm[i];
-    //         if (pokemon.id === whatTheyClicked) {
-                
-    //             indexOfPkm = i;
-    //         }
-    //     }
-    //     remainingPkm.splice(indexOfPkm, 1);
-    //     alert('you caught it!');
-    // } else {
-    //     //push the pokemon.id onto the missed pokemon array
-    //     alert('you missed!');
-    //     pkmMissed.push(whatTheyClicked);
-    // }
+    saveToLocalStorage(caughtPokemon);
+    savePermaInformation(allTimeResults);
+
+    setPage();
+
+    clickCounter--;
+
+    resultScreenActivator(clickCounter);
    
 });
 
 
 setPage();
 
+export function saveToLocalStorage(dataStorage) {
+    const newStoredPkm = JSON.stringify(dataStorage);
 
+    localStorage.setItem('STORAGE', newStoredPkm);
+}
+
+export function savePermaInformation(permaInfo) {
+    const permaStorage = JSON.stringify(permaInfo);
+
+    localStorage.setItem('PKM-STATS', permaStorage);
+}

@@ -1,5 +1,3 @@
-// import { pokemonData } from './pokemon.js';
-
 export function getRandomPkm(pkmArray) {
     const randomIndex = Math.floor(Math.random() * pkmArray.length);
 
@@ -11,12 +9,14 @@ export function findById(pkmArray, pkmId) {
     let matchItem = null;
     const pkmNumber = Number(pkmId);
 
+    // console.log(pkmArray, pkmNumber);
+    
     for (let i = 0; i < pkmArray.length; i++) {
-
-        if (pkmNumber === pkmArray[i].id) {
+        if (pkmNumber === Number(pkmArray[i].id)) {
             matchItem = pkmArray[i];
         }
     }
+    
     return matchItem;
 }
 
@@ -58,17 +58,44 @@ export function caughtPokemon(pkmEncountered, id) {
 
 //all encounters + captures per user session: 0,
 
-// export function incrementor(pkmArray, id) {
-//     function addInitialitem(pkmArray, id) {
-//         const initialItem = {
-//             id: id,
-//             encounters: 0,
-//             caught: 0
-//         };
+export function incrementor(pkmArray, id) {
 
-//         pkmArray.push(initialItem);
-//     }
+    function addInitialitem(pkmArray, id) {
 
-//     let itemSeen = findById(pkmArray, id)
-// }
+        const initialItem = {
+            id: id,
+            encounters: 0,
+            caught: 0
+        };
+
+        pkmArray.push(initialItem);
+    }
+
+    let itemSeen = findById(pkmArray, id);
+
+    if (!itemSeen); {
+        addInitialitem(pkmArray, id);
+        itemSeen = findById(pkmArray, id);
+    }
+    itemSeen.encounteredPokemon++;
+    itemSeen.caughtPokemon++;
+
+}
+
+
+export function resultScreenActivator(clickCounter) {
+
+    if (clickCounter === 0) {
+
+        window.location.href = './results.html';
+
+    }
+}
+
+
+export function clearTempStorage(tempStorage) {
+
+    localStorage.clear(tempStorage);
+}
+
 
