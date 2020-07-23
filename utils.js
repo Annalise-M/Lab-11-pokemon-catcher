@@ -11,9 +11,9 @@ export function findById(pkmArray, pkmId) {
 
     
     for (let i = 0; i < pkmArray.length; i++) {
-        console.log(pkmNumber, Number(pkmArray[i].id));
+        // console.log(pkmNumber, Number(pkmArray[i].id));
         if (pkmNumber === Number(pkmArray[i].id)) {
-            console.log('match!');
+            // console.log('match!');
             return pkmArray[i];
         }
         
@@ -74,7 +74,7 @@ export function incrementor(pkmArray, id) {
     }
 
     let itemSeen = findById(pkmArray, id);
-    console.log(itemSeen);
+    // console.log(itemSeen);
 
     if (!itemSeen); {
         addInitialitem(pkmArray, id);
@@ -82,7 +82,7 @@ export function incrementor(pkmArray, id) {
     }
     itemSeen.encounters++;
     itemSeen.caught++;
-    console.log(itemSeen);
+    // console.log(itemSeen);
 }
 
 

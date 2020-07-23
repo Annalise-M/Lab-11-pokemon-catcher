@@ -18,18 +18,14 @@ const image1 = document.getElementById('image1');
 const image2 = document.getElementById('image2');
 const image3 = document.getElementById('image3');
 
-
-// let pkmMissed = [];
-// let totalPokemonCaught = 0;
-
-// let pkmEncountered = pokemonData.slice();
-let remainingPkm = pokemonData.slice(0, 4);
+let remainingPkm = pokemonData.slice(0,);
 let correctAnswer = null;
-
 let clickCounter = 10;
+
 let pkmEncountered = [];
 let caughtPokemon = [];
 let allTimeResults;
+
 
 function setPage() {
     
@@ -104,9 +100,12 @@ submitButton.addEventListener('click', () => {
     const chosenPkm = playersChoice.value;
 
     incrementor(caughtPokemon, chosenPkm);
+    incrementor(pkmEncountered, chosenPkm);
     incrementor(allTimeResults, chosenPkm);
-
+    // console.log(timesEncountered, timesCaught);
+   
     saveToLocalStorage(caughtPokemon);
+    saveToLocalStorage(pkmEncountered);
     savePermaInformation(allTimeResults);
 
     setPage();
