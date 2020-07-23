@@ -7,7 +7,7 @@ import {
 } from './utils.js';
 
 const submitButton = document.getElementById('submit-button');
-// const nextButton = document.getElementById('next-button');
+
 const answerDiv = document.querySelector('#answer');
 
 const radio1 = document.getElementById('input1');
@@ -23,7 +23,7 @@ const image3 = document.getElementById('image3');
 // let totalPokemonCaught = 0;
 
 // let pkmEncountered = pokemonData.slice();
-let remainingPkm = pokemonData.slice();
+let remainingPkm = pokemonData.slice(0, 4);
 let correctAnswer = null;
 
 let clickCounter = 10;

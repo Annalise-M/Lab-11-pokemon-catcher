@@ -9,12 +9,14 @@ export function findById(pkmArray, pkmId) {
     let matchItem = null;
     const pkmNumber = Number(pkmId);
 
-    // console.log(pkmArray, pkmNumber);
     
     for (let i = 0; i < pkmArray.length; i++) {
+        console.log(pkmNumber, Number(pkmArray[i].id));
         if (pkmNumber === Number(pkmArray[i].id)) {
-            matchItem = pkmArray[i];
+            console.log('match!');
+            return pkmArray[i];
         }
+        
     }
     
     return matchItem;
@@ -59,7 +61,7 @@ export function caughtPokemon(pkmEncountered, id) {
 //all encounters + captures per user session: 0,
 
 export function incrementor(pkmArray, id) {
-
+    // console.log(id);
     function addInitialitem(pkmArray, id) {
 
         const initialItem = {
@@ -72,14 +74,15 @@ export function incrementor(pkmArray, id) {
     }
 
     let itemSeen = findById(pkmArray, id);
+    console.log(itemSeen);
 
     if (!itemSeen); {
         addInitialitem(pkmArray, id);
         itemSeen = findById(pkmArray, id);
     }
-    itemSeen.encounteredPokemon++;
-    itemSeen.caughtPokemon++;
- 
+    itemSeen.encounters++;
+    itemSeen.caught++;
+    console.log(itemSeen);
 }
 
 
