@@ -1,5 +1,7 @@
-// import { encounteredPokemon, caughtPokemon, getPkmStorage, getLocalStorage } from '../utils.js';
-// import { statsArray } from './pokemon-stats.js'; for imgs
+import { getPkmStorage } from '../utils.js';
+// import { statsArray } from './pokemon-stats.js';
+
+// import { getPkmStorage } from '../utils.js';
 
 const results = JSON.parse(localStorage.getItem('STORAGE'));
 const listResults = document.getElementById('pkm-results');
@@ -20,14 +22,44 @@ results.forEach((pokemon) => {
 
 });
 
-const names = [];
-const votes = [];
+// const names = [];
+// const votes = [];
 
-results.forEach(pokemon => {
-    const label = pokemon.id;
-    const datapoint = pokemon.timesCaught;
-    votes.push(datapoint);
-    names.push(label);
+
+// results.forEach(pokemon => {
+//     const label = pokemon.id;
+//     const datapoint = pokemon.timesCaught;
+//     votes.push(datapoint);
+//     names.push(label);
+// });
+
+// const caughtPokemon = getPkmStorage();
+// const pokemonData = mungeNames(captureEvents);
+
+const ctx = document.getElementById('chart').getContext('2d');
+
+const data = [getPkmStorage];
+const labelColors = ['red', 'orenge', 'yellow', 'green', 'blue', 'purple'];
+
+const myChart = new Chart(ctx, { //eslint-disable-line
+    type: 'pie',
+    data: {
+        labels: labelColors,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: labelColors
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
 });
 
 
