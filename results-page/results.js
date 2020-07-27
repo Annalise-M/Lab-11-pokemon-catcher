@@ -22,16 +22,16 @@ results.forEach((pokemon) => {
 
 });
 
-// const names = [];
-// const votes = [];
+const names = [];
+const votes = [];
 
 
-// results.forEach(pokemon => {
-//     const label = pokemon.id;
-//     const datapoint = pokemon.timesCaught;
-//     votes.push(datapoint);
-//     names.push(label);
-// });
+results.forEach(pokemon => {
+    const label = pokemon.id;
+    const datapoint = pokemon.timesCaught;
+    votes.push(datapoint);
+    names.push(label);
+});
 
 // const caughtPokemon = getPkmStorage();
 // const pokemonData = mungeNames(captureEvents);
@@ -61,6 +61,11 @@ const myChart = new Chart(ctx, { //eslint-disable-line
         }
     }
 });
+
+// Here I should call upon the reset-button.addEventListener('click', () => {
+// have button reset and redirect the page.
+//});
+
 
 
 export function saveToLocalStorage(dataStorage) {

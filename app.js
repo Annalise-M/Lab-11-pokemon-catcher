@@ -18,7 +18,7 @@ const image1 = document.getElementById('image1');
 const image2 = document.getElementById('image2');
 const image3 = document.getElementById('image3');
 
-let remainingPkm = pokemonData.slice(0,);
+let remainingPkm = pokemonData.slice(0);
 let correctAnswer = null;
 let clickCounter = 10;
 
@@ -72,10 +72,6 @@ function setPage() {
     radio1.textContent = randomPkm1.pokemon;
     radio2.textContent = randomPkm2.pokemon;
     radio3.textContent = randomPkm3.pokemon;
-
-    // radio1.disabled = false;
-    // radio2.disabled = false;
-    // radio3.disabled = false;
 
     const choiceDiv = document.getElementById('pokemon-choice-container');
     choiceDiv.classList.remove('disabled');
