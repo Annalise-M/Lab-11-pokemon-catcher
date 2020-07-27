@@ -18,7 +18,7 @@ const image1 = document.getElementById('image1');
 const image2 = document.getElementById('image2');
 const image3 = document.getElementById('image3');
 
-let remainingPkm = pokemonData.slice(0);
+let remainingPkm = pokemonData.slice(0,);
 let correctAnswer = null;
 let clickCounter = 10;
 
